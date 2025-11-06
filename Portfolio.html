@@ -50,7 +50,7 @@
 
     /* HERO */
     .hero-slide {
-      background-image: linear-gradient(rgba(13, 9, 2, 0.4), rgba(13, 9, 2, 0.4)), url('./asset/pexels-danny-meneses-340146-943096.jpg');
+      background-image: linear-gradient(rgba(255,165,0,0.4), rgba(255,165,0,0.4)), url('./asset/pexels-danny-meneses-340146-943096.jpg');
       background-size: cover;
       background-position: center;
       transition: background-image 1s ease-in-out;
@@ -104,28 +104,26 @@
       <a href="index.html" class="hover:text-secondary">Home</a>
       <a href="about.html" class="hover:text-secondary">About</a>
       <a href="services.html" class="hover:text-secondary">Services</a>
-      <a href="portfolio.html" class="hover:text-secondary">Portfolio</a>
+      <a href="Portfolio.html" class="hover:text-secondary">Portfolio</a>
       <a href="blog.html" class="hover:text-secondary">Blog</a>
       <a href="shop.html" class="hover:text-secondary">Shop</a>
       <a href="contact.html" class="hover:text-secondary">Contact</a>
     </nav>
 
-   <!-- Mobile Menu Button -->
-  <button id="menuBtn" class="md:hidden text-white text-2xl">
-    <i class="fas fa-bars"></i>
-  </button>
-</header>
+    <div id="menu-btn" class="md:hidden hamburger-menu">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
 
-<!-- MOBILE MENU -->
-<div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-primary bg-opacity-95 backdrop-blur-lg z-50 flex flex-col p-6 md:hidden">
-  <a href="index.html" class="hover:text-secondary py-2">Home</a>
-  <a href="about.html" class="hover:text-secondary py-2">About</a>
-  <a href="services.html" class="hover:text-secondary py-2">Services</a>
-  <a href="Portfolio.html" class="hover:text-secondary py-2">Portfolio</a>
-  <a href="blog.html" class="hover:text-secondary py-2">Blog</a>
-  <a href="shop.html" class="hover:text-secondary py-2">Shop</a>
-  <a href="contact.html" class="hover:text-secondary py-2">Contact</a>
-</div>
+  <!-- MOBILE MENU -->
+  <ul id="mobile-menu" class="menu-items md:hidden">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 
   <!-- HERO -->
   <section id="hero" class="h-screen w-full hero-slide flex items-center justify-center text-center px-6">
@@ -193,14 +191,14 @@
     let heroIdx = 0;
     setInterval(() => {
       heroIdx = (heroIdx + 1) % heroImages.length;
-      hero.style.backgroundImage = `linear-gradient(rgba(13, 9, 2, 0.4), rgba(13, 9, 2, 0.4)), url(${heroImages[heroIdx]})`;
+      hero.style.backgroundImage = `linear-gradient(rgba(255,165,0,0.4), rgba(255,165,0,0.4)), url(${heroImages[heroIdx]})`;
     }, 5000);
 
     const projects = [
       { name: "JengaWeb Landing Page", description: "Modern landing page template built with Tailwind CSS.", image: "asset/jengaweb.png", category: "templates", link: "#" },
-      { name: "Liquor Shop Stock System", description: "Web app to track sales, orders, and stocks using Django and MySQL.", image: "asset/greanstream.png", category: "webapps", link: "#" },
-      { name: "GreenStream Solutions", description: "E-waste management platform supporting sustainability projects.", image: "asset/greanstream.png", category: "webapps", link: "https://github.com/quan0790/greenstream-impact-hub" },
-      { name: "Jirani Eats", description: "Food sharing platform for reducing surplus and supporting communities.", image: "asset/jirani eat.png", category: "webapps", link: "https://github.com/quan0790/Jirani_Eats/" }
+      { name: "Liquor Shop Stock System", description: "Web app to track sales, orders, and stocks using Django and MySQL.", image: "asset/liquor.png", category: "webapps", link: "#" },
+      { name: "GreenStream Solutions", description: "E-waste management platform supporting sustainability projects.", image: "asset/greenstream.png", category: "webapps", link: "#" },
+      { name: "Jirani Eats", description: "Food sharing platform for reducing surplus and supporting communities.", image: "asset/jirani-eat.png", category: "webapps", link: "https://github.com/quan0790/Jirani_Eats/" }
     ];
 
     const projectContainer = document.getElementById('projectContainer');
@@ -224,4 +222,3 @@
   </script>
 </body>
 </html>
-
