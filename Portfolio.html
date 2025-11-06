@@ -4,30 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
   <title>JengaWeb | Creative Web Development & Branding in Kenya</title>
 
-  <!-- SEO Meta -->
+  <!-- SEO & Social Meta -->
   <meta name="description" content="Explore JengaWeb — building your digital presence with modern web design, branding, and software solutions." />
   <meta name="keywords" content="JengaWeb, Portfolio, Web Development, Branding, UI/UX Design, Kenya, Django, Tailwind CSS, Python, MySQL" />
   <meta name="author" content="JengaWeb" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://jengaweb.co.ke/" />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jengaweb.co.ke/" />
   <meta property="og:title" content="JengaWeb | Creative Web Development & Branding in Kenya" />
   <meta property="og:description" content="JengaWeb delivers top-tier web solutions, branding, and digital services to elevate your business." />
   <meta property="og:image" content="asset/logo.jpg" />
-
-  <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="JengaWeb | Creative Web Development & Branding in Kenya" />
   <meta name="twitter:description" content="JengaWeb delivers top-tier web solutions, branding, and digital services to elevate your business." />
   <meta name="twitter:image" content="asset/logo.jpg" />
-
-  <!-- Favicon -->
   <link rel="icon" href="asset/logo.jpg" type="image/png" />
 
   <!-- Fonts & Libraries -->
@@ -38,181 +31,60 @@
 
   <!-- Tailwind Config -->
   <script>
-    tailwind.config = {
+   tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#0d9488',
-            secondary: '#f97316',
+            primary: 'orange',   /* headings and key accents */
+            secondary: '#0d9488', /* teal: footer and hover nav links */
             dark: '#1e293b'
           },
-          animation: {
-            'pulse-slow': 'pulse 3s ease-in-out infinite'
-          }
+          animation: { 'pulse-slow': 'pulse 3s ease-in-out infinite' }
         }
       }
     };
   </script>
 
-  <!-- Custom Styles -->
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
+    body { font-family: 'Poppins', sans-serif; }
 
+    /* HERO */
     .hero-slide {
-      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./asset/pexels-danny-meneses-340146-943096.jpg');
+      background-image: linear-gradient(rgba(13, 9, 2, 0.4), rgba(13, 9, 2, 0.4)), url('./asset/pexels-danny-meneses-340146-943096.jpg');
       background-size: cover;
       background-position: center;
       transition: background-image 1s ease-in-out;
     }
 
-    .hamburger-menu,
-    .menu-items {
-      transition: all 0.3s ease;
-    }
+    /* HEADER */
+    .static-header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: #0d9488; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all .3s; }
+    .static-header.scrolled { padding: .5rem 2rem; background-color: rgba(13,148,136,.95); backdrop-filter: blur(5px); }
 
-    .menu-items {
-      transform: translateX(100%);
-    }
+    .logo-img { height: 50px; border-radius: 50px; border: 1.7px solid #0d9488; transition: transform .3s; }
+    .logo-img:hover { transform: rotate(10deg); }
 
-    .menu-items.open {
-      transform: translateX(0);
-    }
+    /* HAMBURGER MENU */
+    .hamburger-menu { width: 30px; height: 25px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+    .hamburger-menu span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: all 0.3s; }
+    .hamburger-menu.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+    .hamburger-menu.open span:nth-child(2) { opacity: 0; }
+    .hamburger-menu.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
-    .static-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #0d9488;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all .3s;
-    }
+    /* MOBILE MENU */
+    .menu-items { transform: translateX(100%); transition: all 0.3s ease; position: fixed; top: 70px; right: 0; width: 75%; max-width: 300px; height: calc(100% - 70px); background-color: #0d9488; backdrop-filter: blur(10px); z-index: 50; padding: 1.5rem; display: flex; flex-direction: column; list-style: none; }
+    .menu-items.open { transform: translateX(0); }
+    .menu-items a { display: block; padding: .6rem 1rem; color: white; text-decoration: none; border-radius: 6px; margin-bottom: .5rem; }
+    .menu-items a:hover { background-color: rgba(255,255,255,0.1); transform: translateX(5px); }
 
-    .static-header.scrolled {
-      padding: .5rem 2rem;
-      background-color: rgba(13,148,136,.95);
-      backdrop-filter: blur(5px);
-    }
+    /* FILTER BUTTONS */
+    .filter-btn { background: orange; color: white; padding: 8px 16px; border-radius: 9999px; font-weight: 600; transition: background 0.3s; }
+    .filter-btn:hover { background: #ff8c00; } /* darker orange on hover */
 
-    .logo-img {
-      height: 50px;
-      border-radius: 50px;
-      border: 1.7px solid #f97316;
-      transition: transform .3s;
-    }
+    /* PORTFOLIO */
+    .portfolio-item { width: 100%; border-radius: 12px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .portfolio-item:hover { transform: scale(1.05); opacity: 0.95; }
 
-    .logo-img:hover {
-      transform: rotate(10deg);
-    }
-
-    .hamburger-menu {
-      width: 30px;
-      height: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .hamburger-menu span {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background: white;
-      border-radius: 3px;
-      transition: all 0.3s;
-    }
-
-    .hamburger-menu.open span:nth-child(1) {
-      transform: translateY(11px) rotate(45deg);
-    }
-
-    .hamburger-menu.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger-menu.open span:nth-child(3) {
-      transform: translateY(-11px) rotate(-45deg);
-    }
-
-    .menu-items li {
-      opacity: 0;
-      transform: translateX(20px);
-      transition: all .4s ease;
-    }
-
-    .menu-items.open li {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .menu-items a {
-      display: block;
-      padding: .6rem 1rem;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-bottom: .5rem;
-      position: relative;
-    }
-
-    .menu-items a:hover {
-      background-color: rgba(255,255,255,0.1);
-      transform: translateX(5px);
-    }
-
-    .menu-items a::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: rgba(249,115,22,0.22);
-      transition: width .3s;
-    }
-
-    .menu-items a:hover::before {
-      width: 100%;
-    }
-
-    .filter-btn {
-      background: #f97316;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 9999px;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-
-    .filter-btn:hover {
-      background: #ea580c;
-    }
-
-    .portfolio-item {
-      width: 100%;
-      border-radius: 12px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .portfolio-item:hover {
-      transform: scale(1.05);
-      opacity: 0.95;
-    }
-
-    #jenga-ai-chatbox {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      width: 350px;
-      max-width: 90%;
-    }
+    #jenga-ai-chatbox { position: fixed; bottom: 20px; right: 20px; z-index: 9999; width: 350px; max-width: 90%; }
   </style>
 </head>
 
@@ -244,7 +116,7 @@
   </header>
 
   <!-- MOBILE MENU -->
-  <ul id="mobile-menu" class="menu-items fixed top-[70px] right-0 w-56 h-[calc(100%-70px)] bg-secondary bg-opacity-90 backdrop-blur-lg z-40 p-6 flex flex-col list-none">
+  <ul id="mobile-menu" class="menu-items md:hidden">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
@@ -256,14 +128,14 @@
   <!-- HERO -->
   <section id="hero" class="h-screen w-full hero-slide flex items-center justify-center text-center px-6">
     <div class="max-w-3xl">
-      <h1 class="text-5xl md:text-6xl font-bold mb-4">Welcome to JengaWeb</h1>
+      <h1 class="text-5xl md:text-6xl font-bold mb-4 text-primary">Welcome to JengaWeb</h1>
       <p class="text-xl md:text-2xl mb-6">Building Your Digital Presence with Modern Web Design & Branding</p>
     </div>
   </section>
 
   <!-- PORTFOLIO -->
   <section class="bg-gray-50 py-16 px-4 md:px-20 text-center text-dark">
-    <h2 class="text-4xl font-bold text-secondary mb-4" data-aos="fade-down">Our Projects</h2>
+    <h2 class="text-4xl font-bold text-primary mb-4" data-aos="fade-down">Our Projects</h2>
     <p class="text-gray-600 mb-10 text-lg">Explore some of our latest web development and branding projects.</p>
 
     <div class="mb-12 flex flex-wrap justify-center gap-4">
@@ -278,7 +150,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-primary py-8 px-6 text-white">
+  <footer class="bg-secondary py-8 px-6 text-white">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-3">
         <img src="asset/logo.jpg" alt="JengaWeb Logo" class="h-14 w-14" />
@@ -289,25 +161,21 @@
       </div>
 
       <div class="flex gap-6 text-xl text-white">
-        <a href="#" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-pinterest"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://github.com/quan0790" class="hover:text-secondary"><i class="fab fa-github"></i></a>
+        <a href="#" class="hover:text-primary"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-primary"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-primary"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-primary"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="hover:text-primary"><i class="fab fa-github"></i></a>
       </div>
     </div>
 
     <p class="mt-6 text-center text-gray-200 text-sm">&copy; <span id="year"></span> JengaWeb. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
 
-    // Mobile Menu
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
@@ -315,77 +183,42 @@
       mobileMenu.classList.toggle('open');
     });
 
-    // Hero Background Slider
     const hero = document.getElementById('hero');
     const heroImages = [
       './asset/pexels-danny-meneses-340146-943096.jpg',
       './asset/pexels-luis-gomes-166706-546819.jpg',
     ];
     let heroIdx = 0;
-    function changeHeroBg() {
+    setInterval(() => {
       heroIdx = (heroIdx + 1) % heroImages.length;
-      hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroImages[heroIdx]})`;
-    }
-    setInterval(changeHeroBg, 5000);
+      hero.style.backgroundImage = `linear-gradient(rgba(13, 9, 2, 0.4), rgba(13, 9, 2, 0.4)), url(${heroImages[heroIdx]})`;
+    }, 5000);
 
-    // Dynamic Projects
     const projects = [
-      { name: "JengaWeb Landing Page", description: "Modern landing page template built with Tailwind CSS.", image: "landing.png", category: "templates", link: "#" },
-      { name: "Liquor Shop Stock System", description: "Web app to track sales, orders, and stocks using Django and MySQL.", image: "liquor.png", category: "webapps", link: "#" },
-      { name: "GreenStream Solutions", description: "E-waste management platform supporting sustainability projects.", image: "greenstream.png", category: "opensource", link: "#" },
-      { name: "Jirani Eats", description: "Food sharing platform for reducing surplus and supporting communities.", image: "jirani.png", category: "webapps", link: "https://github.com/quan0790/Jirani_Eats/" }
+      { name: "JengaWeb Landing Page", description: "Modern landing page template built with Tailwind CSS.", image: "asset/jengaweb.png", category: "templates", link: "#" },
+      { name: "Liquor Shop Stock System", description: "Web app to track sales, orders, and stocks using Django and MySQL.", image: "asset/greanstream.png", category: "webapps", link: "#" },
+      { name: "GreenStream Solutions", description: "E-waste management platform supporting sustainability projects.", image: "asset/greanstream.png", category: "webapps", link: "#" },
+      { name: "Jirani Eats", description: "Food sharing platform for reducing surplus and supporting communities.", image: "asset/jirani eat.png", category: "webapps", link: "https://github.com/quan0790/Jirani_Eats/" }
     ];
 
     const projectContainer = document.getElementById('projectContainer');
-
-    function displayProjects(filter = 'all') {
+    function displayProjects(filter='all') {
       projectContainer.innerHTML = '';
       projects.forEach(project => {
-        if (filter === 'all' || project.category === filter) {
+        if(filter==='all' || project.category===filter){
           const div = document.createElement('div');
           div.className = 'portfolio-item bg-white text-dark p-4 rounded-lg shadow-md';
-          div.innerHTML = `
-            <img src="${project.image}" alt="${project.name}" class="rounded-lg mb-4" loading="lazy">
-            <h3 class="font-bold text-xl mb-2">${project.name}</h3>
-            <p class="text-gray-700 mb-3">${project.description}</p>
-            <a href="${project.link}" class="text-primary font-semibold hover:underline">View Project</a>
-          `;
+          div.innerHTML = `<img src="${project.image}" alt="${project.name}" class="rounded-lg mb-4" loading="lazy">
+                           <h3 class="font-bold text-xl mb-2 text-primary">${project.name}</h3>
+                           <p class="text-gray-700 mb-3">${project.description}</p>
+                           <a href="${project.link}" class="text-primary font-semibold hover:underline">View Project</a>`;
           projectContainer.appendChild(div);
         }
       });
     }
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => displayProjects(btn.dataset.filter));
-    });
-
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', ()=>displayProjects(btn.dataset.filter)));
     displayProjects();
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // JengaAI Chatbox (Chatbase)
-    (function() {
-      const chatboxContainer = document.createElement("div");
-      chatboxContainer.id = "jenga-ai-chatbox";
-      document.body.appendChild(chatboxContainer);
-
-      const script = document.createElement("script");
-      script.src = "https://www.chatbase.co/embed.min.js";
-      script.onload = () => {
-        if (window.ChatbaseEmbed) {
-          new window.ChatbaseEmbed({
-            selector: "#jenga-ai-chatbox",
-            apiKey: "YOUR_CHATBASE_API_KEY",
-            title: "JengaWeb AI Assistant",
-            welcomeMessage: "Hi! I'm JengaWeb AI. How can I help you today?",
-            primaryColor: "#0d9488",
-            secondaryColor: "#f97316",
-            position: "bottom-right",
-            floating: true
-          });
-        }
-      };
-      document.body.appendChild(script);
-    })();
   </script>
 </body>
 </html>

@@ -4,70 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>JengaWeb | Web Development & Design Beyond Boundaries</title>
+  <title>JengaWeb | Our Services</title>
 
   <!-- SEO Meta -->
   <meta name="description" content="JengaWeb is your creative partner for stunning web development, UI/UX, and branding services. Elevate your online presence with our innovative solutions.">
   <meta name="keywords" content="JengaWeb, Web Design Kenya, Web Development, UI/UX, Branding, JavaScript, Python, MySQL, Tailwind CSS, HTML, CSS">
   <meta name="author" content="JengaWeb" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.jengaweb.co.ke/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="JengaWeb | Web Development & Design Beyond Boundaries" />
-  <meta property="og:description" content="Explore JengaWeb—where web design, development, and innovation meet." />
-  <meta property="og:image" content="https://www.jengaweb.co.ke/fav.ico" />
-  <meta property="og:url" content="https://www.jengaweb.co.ke/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="JengaWeb | Web Development & Design Beyond Boundaries" />
-  <meta name="twitter:description" content="Explore JengaWeb—where web design, development, and innovation meet." />
-  <meta name="twitter:image" content="https://www.jengaweb.co.ke/fav.ico" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="fav.ico" type="image/x-icon" />
-
-  <!-- Fonts & Tailwind -->
+  <!-- Favicon & Font Awesome -->
+  <link rel="icon" href="asset/logo.jpg" type="image/x-icon" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#0d9488',
-            secondary: '#f97316',
+            primary: '#0d9488',   /* teal */
+            secondary: '#f97316', /* accent orange */
             dark: '#0f172a'
           },
-          animation: {
-            'pulse-slow': 'pulse 3s ease-in-out infinite'
-          }
+          animation: { 'pulse-slow': 'pulse 3s ease-in-out infinite' }
         }
       }
     }
   </script>
 
   <style>
-    .static-header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: #0d9488; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all .3s; }
-    .static-header.scrolled { padding: .5rem 2rem; background-color: rgba(13,148,136,.95); backdrop-filter: blur(5px); }
-    .logo-img { height: 50px; transition: transform .3s; border-radius: 50px; border: 1.7px solid #f97316; }
+    /* Header */
+    .static-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all .3s; background-color: #0d9488; }
+    .static-header.scrolled { background-color: rgba(13,148,136,.95); backdrop-filter: blur(5px); }
+    .logo-img { height: 50px; border-radius: 50px; border: 1.7px solid #f97316; transition: transform .3s; }
     .logo-img:hover { transform: rotate(10deg); }
-    .hamburger-menu { position: relative; width: 30px; height: 25px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+
+    /* Hamburger */
+    .hamburger-menu { width: 30px; height: 25px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
     .hamburger-menu span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: all 0.3s; }
     .hamburger-menu.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
     .hamburger-menu.open span:nth-child(2) { opacity: 0; }
     .hamburger-menu.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-    .menu-items { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+
+    /* Mobile Menu */
+    .menu-items {
+      transform: translateX(100%);
+      transition: all 0.3s ease;
+      position: fixed;
+      top: 70px;
+      right: 0;
+      width: 75%;
+      max-width: 300px;
+      height: calc(100% - 70px);
+      background-color: #0d9488; /* teal to match header */
+      backdrop-filter: blur(10px);
+      z-index: 50;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+    }
     .menu-items.open { transform: translateX(0); }
-    .menu-items li { opacity: 0; transform: translateX(20px); transition: all .4s ease; }
-    .menu-items.open li { opacity: 1; transform: translateX(0); }
-    .menu-items a { display: block; padding: .6rem 1rem; color: white; text-decoration: none; border-radius: 6px; margin-bottom: .5rem; position: relative; }
+    .menu-items a { display: block; padding: .6rem 1rem; color: white; text-decoration: none; border-radius: 6px; margin-bottom: .5rem; }
     .menu-items a:hover { background-color: rgba(255,255,255,0.1); transform: translateX(5px); }
-    .menu-items a::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: rgba(249,115,22,0.22); transition: width .3s; }
-    .menu-items a:hover::before { width: 100%; }
+
+    /* Hero */
     .hero-slide { background-size: cover; background-position: center; transition: background-image 1s ease-in-out; }
+
+    /* Services Cards */
+    .service-card { background-color: white; border-radius: 1rem; padding: 1.5rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+    .service-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.15); transform: translateY(-5px); }
+    .service-card i { font-size: 3rem; color: #0d9488; margin-bottom: 1rem; } /* teal icon */
+    .service-card h3 { font-size: 1.5rem; font-weight: 600; color: #0d9488; margin-bottom: 0.5rem; }
+    .service-card p { color: #4b5563; }
+
+    /* Scrollbar hide for mobile menu */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
@@ -76,15 +88,17 @@
 <body class="bg-dark text-white font-sans overflow-x-hidden">
 
   <!-- HEADER -->
-  <header id="header" class="static-header text-white px-6 py-4 flex items-center justify-between" role="banner">
+  <header id="header" class="static-header">
     <div class="flex items-center gap-3">
-      <img src="asset/logo.jpg" alt="JengaWeb Logo" class="logo-img" loading="lazy" />
+      <img src="asset/logo.jpg" alt="JengaWeb Logo" class="logo-img" />
       <div>
         <span class="font-bold text-lg">JengaWeb</span>
         <span class="block text-xs italic">Building the Web, One Pixel at a Time</span>
       </div>
     </div>
-    <nav class="hidden md:flex gap-6 text-white text-sm md:text-base" role="navigation">
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6 text-white text-sm lg:text-base">
       <a href="index.html" class="hover:text-secondary">Home</a>
       <a href="about.html" class="hover:text-secondary">About</a>
       <a href="services.html" class="hover:text-secondary">Services</a>
@@ -93,62 +107,65 @@
       <a href="shop.html" class="hover:text-secondary">Shop</a>
       <a href="contact.html" class="hover:text-secondary">Contact</a>
     </nav>
-    <button id="menu-btn" class="md:hidden hamburger-menu" aria-label="Toggle Menu">
+
+    <!-- Mobile Hamburger -->
+    <div id="menu-btn" class="md:hidden hamburger-menu">
       <span></span><span></span><span></span>
-    </button>
+    </div>
   </header>
 
   <!-- MOBILE MENU -->
-  <ul id="mobile-menu" class="menu-items fixed top-[70px] right-0 w-56 h-[calc(100%-70px)] bg-secondary bg-opacity-90 backdrop-blur-lg z-40 p-6 flex flex-col list-none no-scrollbar" aria-hidden="true">
-    <li><a href="index.html" aria-label="Home">Home</a></li>
-    <li><a href="about.html" aria-label="About">About</a></li>
-    <li><a href="services.html" aria-label="Services">Services</a></li>
-    <li><a href="portfolio.html" aria-label="Portfolio">Portfolio</a></li>
-    <li><a href="blog.html" aria-label="Blog">Blog</a></li>
-    <li><a href="contact.html" aria-label="Contact">Contact</a></li>
+  <ul id="mobile-menu" class="menu-items no-scrollbar md:hidden">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 
-  <!-- HERO SECTION -->
-  <section id="hero" class="hero-slide h-[80vh] w-full flex items-center justify-center text-center bg-[url('hero-bg.jpg')] bg-cover bg-center">
+  <!-- HERO -->
+  <section id="hero" class="hero-slide h-[80vh] w-full flex items-center justify-center text-center bg-[url('hero-bg.jpg')]">
     <div class="bg-black bg-opacity-50 p-8 rounded-lg">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">We Build Websites & Brands Beyond Boundaries</h1>
-      <p class="text-lg md:text-2xl mb-6">Web Development, UI/UX, and Branding Solutions for your business</p>
-      <a href="#services" class="px-6 py-3 bg-secondary text-white rounded-lg hover:bg-orange-500 transition">Explore Services</a>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Our Services</h1>
+      <p class="text-lg md:text-2xl mb-6">Web Development, UI/UX, Branding & Marketing Solutions</p>
+      <a href="#services" class="px-6 py-3 bg-secondary text-white rounded-lg hover:bg-primary transition">Explore Services</a>
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
-  <section id="services" class="bg-white py-20 px-6 md:px-20 text-dark">
-    <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Our Services</h2>
-    <div class="grid md:grid-cols-3 gap-10">
-      <div class="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition">
-        <i class="fas fa-code text-5xl text-secondary mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Web Development</h3>
+  <!-- SERVICES -->
+  <section id="services" class="bg-gray-50 py-20 px-6 md:px-20 text-gray-800">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-primary">What We Offer</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="service-card">
+        <i class="fas fa-code"></i>
+        <h3>Web Development</h3>
         <p>Custom websites and web apps built with clean, modern code for performance and scalability.</p>
       </div>
-      <div class="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition">
-        <i class="fas fa-paint-brush text-5xl text-secondary mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+      <div class="service-card">
+        <i class="fas fa-paint-brush"></i>
+        <h3>UI/UX Design</h3>
         <p>Intuitive and attractive designs for mobile and web that engage users seamlessly.</p>
       </div>
-      <div class="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition">
-        <i class="fas fa-bullhorn text-5xl text-secondary mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Branding & Marketing</h3>
+      <div class="service-card">
+        <i class="fas fa-bullhorn"></i>
+        <h3>Branding & Marketing</h3>
         <p>Logo, brand identity, and digital marketing solutions that make your business stand out.</p>
       </div>
-      <div class="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition">
-        <i class="fas fa-mobile-alt text-5xl text-secondary mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Mobile App Design</h3>
+      <div class="service-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Mobile App Design</h3>
         <p>Beautiful and functional mobile app designs that deliver an excellent user experience.</p>
       </div>
-      <div class="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition">
-        <i class="fas fa-chart-line text-5xl text-secondary mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+      <div class="service-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Digital Marketing</h3>
         <p>SEO, social media campaigns, and strategy to grow your online presence efficiently.</p>
       </div>
-      <div class="bg-gray-100 rounded-lg p-6 text-center shadow-lg hover:shadow-xl transition">
-        <i class="fas fa-drafting-compass text-5xl text-secondary mb-4"></i>
-        <h3 class="text-xl font-bold mb-2">Consultancy & Support</h3>
+      <div class="service-card">
+        <i class="fas fa-drafting-compass"></i>
+        <h3>Consultancy & Support</h3>
         <p>Technical support, guidance, and consultancy for building and maintaining digital solutions.</p>
       </div>
     </div>
@@ -158,45 +175,38 @@
   <footer class="bg-primary py-8 px-6">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-3">
-        <img src="asset/logo.jpg" alt="JengaWeb Logo" class="h-14 w-14" loading="lazy" />
+        <img src="asset/logo.jpg" alt="JengaWeb Logo" class="h-14 w-14" />
         <div>
           <span class="font-bold text-lg">JengaWeb</span>
           <span class="block text-xs">Building the Web, One Pixel at a Time</span>
         </div>
       </div>
-      <div class="flex gap-6 text-xl text-white">
-        <a href="#" aria-label="Facebook" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter" class="hover:text-secondary"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="Instagram" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="LinkedIn" class="hover:text-secondary"><i class="fab fa-linkedin"></i></a>
-        <a href="#" aria-label="Pinterest" class="hover:text-secondary"><i class="fab fa-pinterest"></i></a>
-        <a href="#" aria-label="Telegram" class="hover:text-secondary"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://github.com/quan0790" aria-label="GitHub" class="hover:text-secondary"><i class="fab fa-github"></i></a>
+      <div class="flex flex-wrap justify-center gap-4 text-xl text-white">
+        <a href="#" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-secondary"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-secondary"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/quan0790" class="hover:text-secondary"><i class="fab fa-github"></i></a>
       </div>
       <div class="text-sm mt-4 md:mt-0">&copy; <span id="year"></span> JengaWeb. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
-    const btn = document.getElementById('menu-btn');
-    const mobile = document.getElementById('mobile-menu');
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    btn.addEventListener('click', () => {
-      mobile.classList.toggle('open');
-      btn.classList.toggle('open');
-      document.body.style.overflow = mobile.classList.contains('open') ? 'hidden' : '';
-      mobile.querySelectorAll('li').forEach((item, index) => {
-        item.style.transitionDelay = mobile.classList.contains('open') ? `${index * 0.1}s` : '0s';
-      });
-      mobile.setAttribute('aria-hidden', !mobile.classList.contains('open'));
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     });
 
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
     });
 
-    document.getElementById('year').innerText = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

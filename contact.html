@@ -4,66 +4,156 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>JengaWeb | Designing Brands. Building Code. Beyond Boundaries.</title>
-
-  <!-- SEO Meta -->
-  <meta name="description" content="JengaWeb—led by Kipsoi Kibet—crafts compelling digital experiences. Specializing in branding, responsive web design, and modern development with Tailwind, Java, Python, MySQL.">
-  <meta name="keywords" content="JengaWeb, Kipsoi Kibet, Branding, Web Developer, Tailwind CSS, UI/UX Design, Python Developer, Java Developer, MySQL">
-  <meta name="author" content="Kipsoi Kibet" />
-  <meta name="robots" content="index, follow" />
+  <title>JengaWeb | Contact Us</title>
 
   <!-- Tailwind & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="fav.ico" type="image/x-icon" />
+  <link rel="icon" href="asset/logo.jpg" type="image/png" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#0d9488', secondary: '#f97316', dark: '#0f172a' },
+          colors: {
+            primary: '#0d9488',   // teal
+            secondary: '#f97316', // orange
+            dark: '#1e293b'
+          },
           animation: { 'pulse-slow': 'pulse 3s ease-in-out infinite' }
         }
       }
-    }
+    };
   </script>
 
   <style>
-    /* General Styles */
-    body { margin: 0; font-family: sans-serif; scroll-behavior: smooth; }
-    .hero-slide { background-size: cover; background-position: center; transition: background-image 1s ease-in-out; }
-    .static-header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: #0f9d58; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all .3s; }
-    .static-header.scrolled { padding: .5rem 2rem; background-color: rgba(15,157,88,.95); backdrop-filter: blur(5px); }
-    .logo-img { height: 50px; transition: transform .3s; border-radius: 50px; border: 1.7px solid #f57c00; }
+    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    
+    /* Header */
+    .static-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #0d9488; /* teal */
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all .3s;
+    }
+    .static-header.scrolled {
+      padding: .5rem 2rem;
+      background-color: rgba(13,148,136,.95); /* teal semi-transparent */
+      backdrop-filter: blur(5px);
+    }
+    
+    .logo-img {
+      height: 50px;
+      border-radius: 50px;
+      border: 1.7px solid #f97316;
+      transition: transform .3s;
+    }
     .logo-img:hover { transform: rotate(10deg); }
 
     /* Hamburger & Mobile Menu */
-    .hamburger-menu { position: relative; width: 30px; height: 25px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
-    .hamburger-menu span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: all .3s; }
+    .hamburger-menu {
+      width: 30px;
+      height: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .hamburger-menu span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: white;
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
     .hamburger-menu.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
     .hamburger-menu.open span:nth-child(2) { opacity: 0; }
     .hamburger-menu.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-    .menu-items { position: fixed; top: 70px; right: 0; width: 70%; max-width: 300px; height: calc(100% - 70px); background-color: rgba(249,115,22,0.95); backdrop-filter: blur(6px); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; transform: translateX(100%); transition: transform 0.3s ease-in-out; z-index: 999; }
+
+    .menu-items {
+      position: fixed;
+      top: 70px;
+      right: 0;
+      width: 70%;
+      max-width: 300px;
+      height: calc(100% - 70px);
+      background-color: rgba(13,148,136,0.95); /* teal */
+      backdrop-filter: blur(6px);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 999;
+    }
     .menu-items.open { transform: translateX(0); }
-    .menu-items a { color: white; font-weight: 500; font-size: 1.2rem; transition: transform 0.2s, background 0.2s; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
-    .menu-items a:hover { background-color: rgba(255,255,255,0.1); transform: translateX(5px); }
+    .menu-items a {
+      color: white;
+      font-weight: 500;
+      font-size: 1.2rem;
+      transition: transform 0.2s, background 0.2s;
+      padding: .5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .menu-items a:hover, .menu-items a.active {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateX(5px);
+    }
 
     /* Contact Section */
-    .contact-hero { background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('img/contact-bg.jpg') center/cover; }
-    .contact-card { backdrop-filter: blur(10px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: .75rem; padding: 2rem; transition: all 0.3s; }
-    .contact-card:hover { transform: translateY(-5px); border-color: rgba(6,182,212,.5); box-shadow: 0 10px 25px rgba(6,182,212,.1); }
-    .form-input { width: 100%; padding: 1rem; font-size: 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: .5rem; color: white; outline: none; transition: all 0.3s; }
+    .contact-hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('asset/contact-bg.jpg') center/cover;
+    }
+    .contact-card {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: .75rem;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(6,182,212,.5);
+      box-shadow: 0 10px 25px rgba(6,182,212,.1);
+    }
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: .5rem;
+      color: white;
+      outline: none;
+      transition: all 0.3s;
+    }
     .form-input:focus { border-color: #06b6d4; }
-    .social-hover { transition: all 0.3s; }
-    .social-hover:hover { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(6,182,212,.5)); }
-    @media (max-width: 768px) { .menu-items { width: 100%; } .grid-cols-2 { grid-template-columns: 1fr !important; } }
+    .social-hover {
+      transition: all 0.3s;
+    }
+    .social-hover:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 8px rgba(6,182,212,.5));
+    }
+
+    @media (max-width: 768px) { .menu-items { width: 100%; } }
   </style>
 </head>
 
 <body class="bg-dark text-white">
 
   <!-- HEADER -->
-  <header id="header" class="static-header bg-primary text-white px-6 py-4 flex items-center justify-between">
+  <header id="header" class="static-header text-white">
     <div class="flex items-center gap-3">
       <img src="asset/logo.jpg" alt="JengaWeb Logo" class="logo-img" />
       <div>
@@ -71,80 +161,79 @@
         <span class="block text-xs italic">Building the Web, One Pixel at a Time</span>
       </div>
     </div>
-     <nav class="hidden md:flex gap-6 text-white text-sm md:text-base">
-      <a href="index.html" class="hover:text-secondary">Home</a>
-      <a href="about.html" class="hover:text-secondary">About</a>
-      <a href="services.html" class="hover:text-secondary">Services</a>
-      <a href="portfolio.html" class="hover:text-secondary">Portfolio</a>
-      <a href="blog.html" class="hover:text-secondary">Blog</a>
-      <a href="shop.html" class="hover:text-secondary">Shop</a>
-      <a href="contact.html" class="hover:text-secondary">Contact</a>
+
+    <nav class="hidden md:flex gap-6 text-white text-sm md:text-base">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
+
     <div id="menu-btn" class="md:hidden hamburger-menu">
       <span></span><span></span><span></span>
     </div>
   </header>
 
   <!-- MOBILE MENU -->
- <div id="mobileMenu" class="hidden fixed top-[70px] left-0 w-full bg-primary text-center text-white flex flex-col gap-4 py-6 md:hidden">
-  <a href="index.html" class="hover:text-secondary">Home</a>
-  <a href="about.html" class="hover:text-secondary">About</a>
-  <a href="services.html" class="hover:text-secondary">Services</a>
-  <a href="portfolio.html" class="hover:text-secondary">Portfolio</a>
-  <a href="blog.html" class="hover:text-secondary">Blog</a>
-  <a href="shop.html" class="hover:text-secondary">Shop</a>
-  <a href="contact.html" class="hover:text-secondary">Contact</a>
-</div>
+  <ul id="mobile-menu" class="menu-items flex flex-col">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
 
-  <!-- Contact Hero Section -->
-  <section class="contact-hero min-h-[60vh] flex flex-col items-center justify-center text-center pt-24 pb-16 px-6">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">Let's Create <span class="text-orange-600">Together</span></h1>
-    <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-slate-300">Ready to elevate your brand? Reach out for design inquiries, project quotes, or collaboration opportunities.</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#contact-form" class="bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-full font-medium text-white transition-colors scroll-link">Send a Message</a>
-      <a href="tel:+254790264792" class="bg-white text-slate-900 hover:bg-gray-200 px-8 py-3 rounded-full font-medium transition-colors">Call Now</a>
+  <!-- HERO -->
+  <section class="contact-hero min-h-[60vh] flex flex-col items-center justify-center text-center px-6 pt-24">
+    <h1 class="text-5xl md:text-6xl font-bold mb-4">Let's Build <span class="text-secondary">Together</span></h1>
+    <p class="text-xl md:text-2xl max-w-2xl mx-auto text-slate-300">Have a project in mind? Contact us to elevate your brand or request a quote.</p>
+    <div class="mt-6 flex flex-wrap justify-center gap-4">
+      <a href="#contact-form" class="bg-primary hover:bg-teal-700 px-8 py-3 rounded-full font-medium text-white scroll-link transition">Send a Message</a>
+      <a href="tel:+254790264792" class="bg-secondary hover:bg-orange-600 px-8 py-3 rounded-full font-medium text-white transition">Call Now</a>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact-form" class="bg-slate-950 text-white py-16 px-6">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-      
-      <!-- Contact Form -->
-      <div class="contact-card">
-        <h2 class="text-4xl font-bold mb-4 text-cyan-400">Get in Touch</h2>
-        <p class="mb-6 text-slate-300">Have a project in mind? Let’s bring your ideas to life. Reach out today.</p>
-        <form action="https://formspree.io/f/mdkpqlay" method="POST" class="space-y-5">
-          <input type="text" name="name" placeholder="Your Name" required class="form-input">
-          <input type="email" name="email" placeholder="Your Email" required class="form-input">
-          <textarea name="message" rows="5" placeholder="Your Message" required class="form-input"></textarea>
-          <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-cyan-500 py-3 rounded-md font-semibold text-black hover:scale-105 transition-all duration-300">Send Message</button>
-        </form>
-      </div>
+  <!-- CONTACT FORM & INFO -->
+  <section id="contact-form" class="py-16 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+    <!-- Form -->
+    <div class="contact-card">
+      <h2 class="text-4xl font-bold mb-4 text-secondary">Get in Touch</h2>
+      <p class="mb-6 text-slate-300">Reach out today and let’s bring your ideas to life.</p>
+      <form action="https://formspree.io/f/mdkpqlay" method="POST" class="space-y-5">
+        <input type="text" name="name" placeholder="Your Name" required class="form-input">
+        <input type="email" name="email" placeholder="Your Email" required class="form-input">
+        <textarea name="message" rows="5" placeholder="Your Message" required class="form-input"></textarea>
+        <button type="submit" class="w-full bg-gradient-to-r from-secondary to-primary py-3 rounded-md font-semibold text-black hover:scale-105 transition-all duration-300">Send Message</button>
+      </form>
+    </div>
 
-      <!-- Contact Info & Map -->
-      <div class="space-y-8">
-        <div>
-          <h3 class="text-2xl font-semibold mb-3 text-orange-400">Contact Info</h3>
-          <p class="text-slate-300"><i class="fas fa-envelope text-cyan-400 mr-2"></i> informjengaweb@gmail.com</p>
-          <p class="text-slate-300"><i class="fas fa-phone text-cyan-400 mr-2"></i> +254 790 264 792</p>
-          <p class="text-slate-300"><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i> Busia, Kenya</p>
-        </div>
-        <div class="flex gap-4 text-xl text-white">
-          <a href="#" class="social-hover"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-hover"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/quan0790" class="social-hover"><i class="fab fa-github"></i></a>
-        </div>
-        <div class="map-container mt-6 h-64 rounded-xl overflow-hidden border-2 border-slate-800 shadow-md">
-          <iframe src="https://www.google.com/maps?q=Busia,+Kenya&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+    <!-- Info -->
+    <div class="space-y-8 text-slate-300">
+      <div>
+        <h3 class="text-2xl font-semibold mb-3 text-secondary">Contact Info</h3>
+        <p><i class="fas fa-envelope text-primary mr-2"></i>informjengaweb@gmail.com</p>
+        <p><i class="fas fa-phone text-primary mr-2"></i>+254 790 264 792</p>
+        <p><i class="fas fa-map-marker-alt text-primary mr-2"></i>Busia, Kenya</p>
+      </div>
+      <div class="flex gap-4 text-xl text-white">
+        <a href="#" class="social-hover"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/quan0790" class="social-hover"><i class="fab fa-github"></i></a>
+      </div>
+      <div class="map-container mt-6 h-64 rounded-xl overflow-hidden border-2 border-slate-800 shadow-md">
+        <iframe src="https://www.google.com/maps?q=Busia,+Kenya&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="bg-primary py-8 px-6">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-3">
@@ -161,7 +250,7 @@
         <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
         <a href="#" class="social-hover"><i class="fab fa-github"></i></a>
       </div>
-      <div class="text-sm">&copy; <span id="year"></span> JengaWeb. All rights reserved.</div>
+      <div class="text-sm text-white">&copy; <span id="year"></span> JengaWeb. All rights reserved.</div>
     </div>
   </footer>
 
@@ -191,6 +280,11 @@
         btn.classList.remove('open');
         document.body.style.overflow = '';
       });
+    });
+
+    // Highlight active links
+    document.querySelectorAll('nav a, #mobile-menu a').forEach(link => {
+      if(link.href === window.location.href) link.classList.add('active');
     });
   </script>
 </body>
