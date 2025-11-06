@@ -104,26 +104,28 @@
       <a href="index.html" class="hover:text-secondary">Home</a>
       <a href="about.html" class="hover:text-secondary">About</a>
       <a href="services.html" class="hover:text-secondary">Services</a>
-      <a href="Portfolio.html" class="hover:text-secondary">Portfolio</a>
+      <a href="portfolio.html" class="hover:text-secondary">Portfolio</a>
       <a href="blog.html" class="hover:text-secondary">Blog</a>
       <a href="shop.html" class="hover:text-secondary">Shop</a>
       <a href="contact.html" class="hover:text-secondary">Contact</a>
     </nav>
 
-    <div id="menu-btn" class="md:hidden hamburger-menu">
-      <span></span><span></span><span></span>
-    </div>
-  </header>
+   <!-- Mobile Menu Button -->
+  <button id="menuBtn" class="md:hidden text-white text-2xl">
+    <i class="fas fa-bars"></i>
+  </button>
+</header>
 
-  <!-- MOBILE MENU -->
-  <ul id="mobile-menu" class="menu-items md:hidden">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-primary bg-opacity-95 backdrop-blur-lg z-50 flex flex-col p-6 md:hidden">
+  <a href="index.html" class="hover:text-secondary py-2">Home</a>
+  <a href="about.html" class="hover:text-secondary py-2">About</a>
+  <a href="services.html" class="hover:text-secondary py-2">Services</a>
+  <a href="Portfolio.html" class="hover:text-secondary py-2">Portfolio</a>
+  <a href="blog.html" class="hover:text-secondary py-2">Blog</a>
+  <a href="shop.html" class="hover:text-secondary py-2">Shop</a>
+  <a href="contact.html" class="hover:text-secondary py-2">Contact</a>
+</div>
 
   <!-- HERO -->
   <section id="hero" class="h-screen w-full hero-slide flex items-center justify-center text-center px-6">
