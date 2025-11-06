@@ -12,6 +12,7 @@
   <meta name="author" content="Kipsoi Kibet" />
   <meta name="robots" content="index, follow" />
 
+  <!-- Tailwind & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="fav.ico" type="image/x-icon" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -20,14 +21,8 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: '#0d9488',
-            secondary: '#f97316',
-            dark: '#0f172a'
-          },
-          animation: {
-            'pulse-slow': 'pulse 3s ease-in-out infinite'
-          }
+          colors: { primary: '#0d9488', secondary: '#f97316', dark: '#0f172a' },
+          animation: { 'pulse-slow': 'pulse 3s ease-in-out infinite' }
         }
       }
     }
@@ -35,45 +30,37 @@
 
   <style>
     /* General Styles */
+    body { margin: 0; font-family: sans-serif; scroll-behavior: smooth; }
     .hero-slide { background-size: cover; background-position: center; transition: background-image 1s ease-in-out; }
-    .hamburger, .menu-items { transition: all 0.3s ease; }
-    .menu-items { transform: translateX(100%); }
-    .menu-items.open { transform: translateX(0); }
     .static-header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: #0f9d58; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all .3s; }
     .static-header.scrolled { padding: .5rem 2rem; background-color: rgba(15,157,88,.95); backdrop-filter: blur(5px); }
     .logo-img { height: 50px; transition: transform .3s; border-radius: 50px; border: 1.7px solid #f57c00; }
     .logo-img:hover { transform: rotate(10deg); }
+
+    /* Hamburger & Mobile Menu */
     .hamburger-menu { position: relative; width: 30px; height: 25px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
-    .hamburger-menu span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; }
+    .hamburger-menu span { display: block; height: 3px; width: 100%; background: white; border-radius: 3px; transition: all .3s; }
     .hamburger-menu.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
     .hamburger-menu.open span:nth-child(2) { opacity: 0; }
     .hamburger-menu.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-    .menu-items li { opacity: 0; transform: translateX(20px); transition: all .4s ease; }
-    .menu-items.open li { opacity: 1; transform: translateX(0); }
-    .menu-items a { display: block; padding: .6rem 1rem; color: white; text-decoration: none; border-radius: 6px; position: relative; margin-bottom: .5rem; }
+    .menu-items { position: fixed; top: 70px; right: 0; width: 70%; max-width: 300px; height: calc(100% - 70px); background-color: rgba(249,115,22,0.95); backdrop-filter: blur(6px); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; transform: translateX(100%); transition: transform 0.3s ease-in-out; z-index: 999; }
+    .menu-items.open { transform: translateX(0); }
+    .menu-items a { color: white; font-weight: 500; font-size: 1.2rem; transition: transform 0.2s, background 0.2s; padding: .5rem 1rem; border-radius: 6px; text-decoration: none; }
     .menu-items a:hover { background-color: rgba(255,255,255,0.1); transform: translateX(5px); }
-    .menu-items a::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: rgba(245,123,0,0.22); transition: width .3s; }
-    .menu-items a:hover::before { width: 100%; }
 
-    /* Contact Section Styles */
+    /* Contact Section */
     .contact-hero { background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('img/contact-bg.jpg') center/cover; }
-    .contact-card { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-    .contact-card:hover { transform: translateY(-5px); border-color: rgba(6, 182, 212, 0.5); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.1); }
-    .input-group { position: relative; margin-bottom: 2rem; }
-    .form-input { width: 100%; padding: 1rem 0; font-size: 1rem; color: white; background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); outline: none; transition: all 0.3s; }
-    .form-label { position: absolute; top: 1rem; left: 0; color: rgba(255, 255, 255, 0.7); pointer-events: none; transition: all 0.3s; }
-    .form-input:focus ~ .form-label, .form-input:valid ~ .form-label { top: -1.2rem; font-size: 0.8rem; color: #06b6d4; }
-    .form-input:focus, .form-input:valid { border-color: #06b6d4; }
+    .contact-card { backdrop-filter: blur(10px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: .75rem; padding: 2rem; transition: all 0.3s; }
+    .contact-card:hover { transform: translateY(-5px); border-color: rgba(6,182,212,.5); box-shadow: 0 10px 25px rgba(6,182,212,.1); }
+    .form-input { width: 100%; padding: 1rem; font-size: 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: .5rem; color: white; outline: none; transition: all 0.3s; }
+    .form-input:focus { border-color: #06b6d4; }
     .social-hover { transition: all 0.3s; }
-    .social-hover:hover { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.5)); }
-    .map-container { height: 100%; min-height: 300px; border-radius: 0.5rem; overflow: hidden; }
-    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    .social-hover:hover { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(6,182,212,.5)); }
+    @media (max-width: 768px) { .menu-items { width: 100%; } .grid-cols-2 { grid-template-columns: 1fr !important; } }
   </style>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
-<body class="bg-dark text-white font-sans overflow-x-hidden">
+<body class="bg-dark text-white">
 
   <!-- HEADER -->
   <header id="header" class="static-header bg-primary text-white px-6 py-4 flex items-center justify-between">
@@ -84,7 +71,7 @@
         <span class="block text-xs italic">Building the Web, One Pixel at a Time</span>
       </div>
     </div>
-    <nav class="flex gap-6 text-white text-sm md:text-base">
+     <nav class="hidden md:flex gap-6 text-white text-sm md:text-base">
       <a href="index.html" class="hover:text-secondary">Home</a>
       <a href="about.html" class="hover:text-secondary">About</a>
       <a href="services.html" class="hover:text-secondary">Services</a>
@@ -99,26 +86,23 @@
   </header>
 
   <!-- MOBILE MENU -->
-  <ul id="mobile-menu" class="menu-items fixed top-[70px] right-0 w-56 h-[calc(100%-70px)] bg-secondary bg-opacity-90 backdrop-blur-lg z-40 p-6 flex flex-col list-none">
-    <li><a href='/'>Home</a></li>
-    <li><a href='/about'>About</a></li>
-    <li><a href='/service'>Services</a></li>
-    <li><a href='/portfolio'>Portfolio</a></li>
-    <li><a href='/blog'>Blog</a></li>
-    <li><a href='/shop'>Shop</a></li>
-  </ul>
+ <div id="mobileMenu" class="hidden fixed top-[70px] left-0 w-full bg-primary text-center text-white flex flex-col gap-4 py-6 md:hidden">
+  <a href="index.html" class="hover:text-secondary">Home</a>
+  <a href="about.html" class="hover:text-secondary">About</a>
+  <a href="services.html" class="hover:text-secondary">Services</a>
+  <a href="portfolio.html" class="hover:text-secondary">Portfolio</a>
+  <a href="blog.html" class="hover:text-secondary">Blog</a>
+  <a href="shop.html" class="hover:text-secondary">Shop</a>
+  <a href="contact.html" class="hover:text-secondary">Contact</a>
+</div>
 
   <!-- Contact Hero Section -->
-  <section class="contact-hero min-h-[60vh] flex items-center pt-24 pb-16 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">Let's Create <span class="text-orange-600">Together</span></h1>
-      <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-slate-300">
-        Ready to elevate your brand? Reach out for design inquiries, project quotes, or collaboration opportunities.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#contact-form" class="bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-full font-medium text-white transition-colors scroll-link">Send a Message</a>
-        <a href="tel:+254790264792" class="bg-white text-slate-900 hover:bg-gray-200 px-8 py-3 rounded-full font-medium transition-colors">Call Now</a>
-      </div>
+  <section class="contact-hero min-h-[60vh] flex flex-col items-center justify-center text-center pt-24 pb-16 px-6">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">Let's Create <span class="text-orange-600">Together</span></h1>
+    <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-slate-300">Ready to elevate your brand? Reach out for design inquiries, project quotes, or collaboration opportunities.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#contact-form" class="bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-full font-medium text-white transition-colors scroll-link">Send a Message</a>
+      <a href="tel:+254790264792" class="bg-white text-slate-900 hover:bg-gray-200 px-8 py-3 rounded-full font-medium transition-colors">Call Now</a>
     </div>
   </section>
 
@@ -126,44 +110,34 @@
   <section id="contact-form" class="bg-slate-950 text-white py-16 px-6">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
       
-      <!-- Left: Contact Form -->
-      <div>
-        <h2 class="text-4xl font-bold mb-4 text-cyan-400 animate-fade-in">Get in Touch</h2>
+      <!-- Contact Form -->
+      <div class="contact-card">
+        <h2 class="text-4xl font-bold mb-4 text-cyan-400">Get in Touch</h2>
         <p class="mb-6 text-slate-300">Have a project in mind? Let’s bring your ideas to life. Reach out today.</p>
-        <form action="https://formspree.io/f/meozqvwk" method="POST" class="space-y-5 bg-slate-900 p-6 rounded-xl shadow-lg">
-          <div>
-            <label class="block mb-1 text-sm font-semibold">Full Name</label>
-            <input type="text" name="name" required class="w-full px-4 py-2 bg-slate-800 rounded-md border border-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white" placeholder="Your Name">
-          </div>
-          <div>
-            <label class="block mb-1 text-sm font-semibold">Email</label>
-            <input type="email" name="email" required class="w-full px-4 py-2 bg-slate-800 rounded-md border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-400 text-white" placeholder="Your Email">
-          </div>
-          <div>
-            <label class="block mb-1 text-sm font-semibold">Message</label>
-            <textarea name="message" rows="4" required class="w-full px-4 py-2 bg-slate-800 rounded-md border border-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-white" placeholder="Your message here..."></textarea>
-          </div>
+        <form action="https://formspree.io/f/mdkpqlay" method="POST" class="space-y-5">
+          <input type="text" name="name" placeholder="Your Name" required class="form-input">
+          <input type="email" name="email" placeholder="Your Email" required class="form-input">
+          <textarea name="message" rows="5" placeholder="Your Message" required class="form-input"></textarea>
           <button type="submit" class="w-full bg-gradient-to-r from-orange-500 to-cyan-500 py-3 rounded-md font-semibold text-black hover:scale-105 transition-all duration-300">Send Message</button>
         </form>
       </div>
 
-      <!-- Right: Contact Info & Map -->
+      <!-- Contact Info & Map -->
       <div class="space-y-8">
         <div>
           <h3 class="text-2xl font-semibold mb-3 text-orange-400">Contact Info</h3>
-          <p class="text-slate-300"><i class="fas fa-envelope text-cyan-400 mr-2"></i> KIPSOIKIBET2@GMAIL.COM</p>
-          <p class="text-slate-300"><i class="fas fa-phone text-cyan-400 mr-2"></i> 0790264792</p>
+          <p class="text-slate-300"><i class="fas fa-envelope text-cyan-400 mr-2"></i> informjengaweb@gmail.com</p>
+          <p class="text-slate-300"><i class="fas fa-phone text-cyan-400 mr-2"></i> +254 790 264 792</p>
           <p class="text-slate-300"><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i> Busia, Kenya</p>
         </div>
-         <div class="flex gap-6 text-xl text-white">
-        <a href="#" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-pinterest"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://github.com/quan0790" class="hover:text-secondary"><i class="fab fa-github"></i></a>
-        <div class="w-full h-64 rounded-xl overflow-hidden border-2 border-slate-800 shadow-md">
+        <div class="flex gap-4 text-xl text-white">
+          <a href="#" class="social-hover"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-hover"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/quan0790" class="social-hover"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="map-container mt-6 h-64 rounded-xl overflow-hidden border-2 border-slate-800 shadow-md">
           <iframe src="https://www.google.com/maps?q=Busia,+Kenya&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>
@@ -171,7 +145,7 @@
   </section>
 
   <!-- Footer -->
-   <footer class="bg-primary py-8 px-6">
+  <footer class="bg-primary py-8 px-6">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="flex items-center gap-3">
         <img src="asset/logo.jpg" alt="JengaWeb Logo" class="h-14 w-14" />
@@ -181,12 +155,11 @@
         </div>
       </div>
       <div class="flex gap-6 text-xl text-white">
-        <a href="#" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-pinterest"></i></a>
-        <a href="#" class="hover:text-secondary"><i class="fab fa-telegram-plane"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-hover"><i class="fab fa-github"></i></a>
       </div>
       <div class="text-sm">&copy; <span id="year"></span> JengaWeb. All rights reserved.</div>
     </div>
@@ -209,16 +182,11 @@
 
     document.getElementById('year').innerText = new Date().getFullYear();
 
-    // Smooth scroll for all links with class 'scroll-link'
     document.querySelectorAll('.scroll-link').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Close mobile menu after click
+        if(target) target.scrollIntoView({ behavior: 'smooth' });
         mobile.classList.remove('open');
         btn.classList.remove('open');
         document.body.style.overflow = '';

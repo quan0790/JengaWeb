@@ -33,9 +33,29 @@
 </script>
 
 <style>
-  .static-header { position: fixed; top: 0; width: 100%; z-index: 1000; background-color: #0d9488; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: all .3s; }
-  .static-header.scrolled { padding: .5rem 2rem; background-color: rgba(13,148,136,.95); backdrop-filter: blur(5px); }
-  .logo-img { height: 50px; transition: transform .3s; border-radius: 50px; border: 1.7px solid #f97316; }
+  .static-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #0d9488;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .3s;
+  }
+  .static-header.scrolled {
+    padding: .5rem 2rem;
+    background-color: rgba(13,148,136,.95);
+    backdrop-filter: blur(5px);
+  }
+  .logo-img {
+    height: 50px;
+    transition: transform .3s;
+    border-radius: 50px;
+    border: 1.7px solid #f97316;
+  }
   .logo-img:hover { transform: rotate(10deg); }
 </style>
 </head>
@@ -43,7 +63,7 @@
 <body class="bg-dark text-white font-sans overflow-x-hidden">
 
 <!-- HEADER -->
-<header id="header" class="static-header text-white px-6 py-4 flex items-center justify-between">
+<header id="header" class="static-header">
   <div class="flex items-center gap-3">
     <img src="asset/logo.jpg" alt="JengaWeb Logo" class="logo-img" />
     <div>
@@ -51,7 +71,9 @@
       <span class="block text-xs italic">Building the Web, One Pixel at a Time</span>
     </div>
   </div>
-  <nav class="flex gap-6 text-white text-sm md:text-base">
+
+  <!-- Desktop Nav -->
+  <nav class="hidden md:flex gap-6 text-white text-sm md:text-base">
     <a href="index.html" class="hover:text-secondary">Home</a>
     <a href="about.html" class="hover:text-secondary">About</a>
     <a href="services.html" class="hover:text-secondary">Services</a>
@@ -60,76 +82,87 @@
     <a href="shop.html" class="hover:text-secondary">Shop</a>
     <a href="contact.html" class="hover:text-secondary">Contact</a>
   </nav>
+
+  <!-- Mobile Menu Button -->
+  <button id="menuBtn" class="md:hidden text-white text-2xl">
+    <i class="fas fa-bars"></i>
+  </button>
 </header>
 
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="hidden fixed top-[70px] left-0 w-full bg-primary text-center text-white flex flex-col gap-4 py-6 md:hidden">
+  <a href="index.html" class="hover:text-secondary">Home</a>
+  <a href="about.html" class="hover:text-secondary">About</a>
+  <a href="services.html" class="hover:text-secondary">Services</a>
+  <a href="portfolio.html" class="hover:text-secondary">Portfolio</a>
+  <a href="blog.html" class="hover:text-secondary">Blog</a>
+  <a href="shop.html" class="hover:text-secondary">Shop</a>
+  <a href="contact.html" class="hover:text-secondary">Contact</a>
+</div>
+
 <!-- HERO SECTION -->
-<section id="hero" class="hero-slide h-screen flex flex-col justify-center items-center text-center px-6 pt-[100px] bg-cover bg-center">
-  <h1 class="text-4xl md:text-6xl font-extrabold mb-6 animate-pulse-slow">
+<section id="hero" class="hero-slide h-screen flex flex-col justify-center items-center text-center px-6 pt-[100px] bg-cover bg-center transition-all duration-700">
+  <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 animate-pulse-slow leading-tight">
     <span>We Build Websites</span><br/>
     <span>One Pixel at a Time</span><br/>
     <span class="text-secondary">For Startups & Entrepreneurs</span>
   </h1>
-  <p class="text-lg md:text-xl mb-10 max-w-2xl">
+  <p class="text-base sm:text-lg md:text-xl mb-10 max-w-2xl">
     JengaWeb delivers clean, responsive, and modern web solutions to help your brand shine online.
   </p>
   <div class="flex flex-wrap justify-center gap-4">
-  <a 
-    class="bg-secondary hover:bg-orange-600 px-8 py-3 rounded-full" 
-    href="https://wa.me/254790264792?text=Hi%20JengaWeb!%20I%20would%20like%20to%20get%20a%20quote%20for%20a%20website." 
-    target="_blank"
-  >
-    Get a Quote
-  </a>
-  <a 
-    class="bg-primary hover:bg-cyan-600 px-8 py-3 rounded-full" 
-    href="portfolio.html"
-  >
-    View Portfolio
-  </a>
-</div>
+    <a 
+      class="bg-secondary hover:bg-orange-600 px-8 py-3 rounded-full" 
+      href="https://wa.me/254790264792?text=Hi%20JengaWeb!%20I%20would%20like%20to%20get%20a%20quote%20for%20a%20website." 
+      target="_blank"
+    >
+      Get a Quote
+    </a>
+    <a 
+      class="bg-primary hover:bg-cyan-600 px-8 py-3 rounded-full" 
+      href="portfolio.html"
+    >
+      View Portfolio
+    </a>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="bg-primary py-8 px-6">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3 text-center md:text-left">
       <div>
         <span class="font-bold text-lg">JengaWeb</span>
         <span class="block text-xs">Building the Web, One Pixel at a Time</span>
       </div>
     </div>
-    <div class="flex gap-6 text-xl text-white">
+    <div class="flex flex-wrap justify-center gap-6 text-xl text-white">
       <a href="#" class="hover:text-secondary"><i class="fab fa-facebook-f"></i></a>
       <a href="#" class="hover:text-secondary"><i class="fab fa-twitter"></i></a>
       <a href="#" class="hover:text-secondary"><i class="fab fa-instagram"></i></a>
       <a href="#" class="hover:text-secondary"><i class="fab fa-linkedin"></i></a>
-      <a href="#" class="hover:text-secondary"><i class="fab fa-pinterest"></i></a>
-      <a href="#" class="hover:text-secondary"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://github.com/quan0790" class="hover:text-secondary"><i class="fab fa-github"></i></a>
+      <a href="#" class="hover:text-secondary"><i class="fab fa-github"></i></a>
     </div>
-    <div class="text-sm">&copy; <span id="year"></span> JengaWeb. All rights reserved.</div>
+    <div class="text-sm text-center md:text-right">&copy; <span id="year"></span> JengaWeb. All rights reserved.</div>
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script>
-  // Hero background slider
+  // Responsive background slideshow
   const hero = document.getElementById('hero');
   const images = [
     'asset/pexels-pixabay-276452.jpg',
-    
+    'asset/pexels-fauxels-3183198.jpg',
+    'asset/pexels-negative-space-160107.jpg'
   ];
   let idx = 0;
 
   function changeBg() {
     idx = (idx + 1) % images.length;
-    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${images[idx]})`;
+    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${images[idx]})`;
   }
-
-  // Set initial background
-  hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${images[0]})`;
-
-  // Change background every 6 seconds
+  hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url(${images[0]})`;
   setInterval(changeBg, 6000);
 
   // Header scroll effect
@@ -137,39 +170,19 @@
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
   });
 
-  // Set copyright year
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Copyright year
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 <!-- FontAwesome -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-
-<!-- JengaAI Chatbox -->
-<script>
-(function() {
-  const chatboxContainer = document.createElement("div");
-  chatboxContainer.id = "jenga-ai-chatbox";
-  document.body.appendChild(chatboxContainer);
-
-  const script = document.createElement("script");
-  script.src = "https://www.chatbase.co/embed.min.js";
-  script.onload = () => {
-    if(window.ChatbaseEmbed){
-      new window.ChatbaseEmbed({
-        selector: "#jenga-ai-chatbox",
-        apiKey: "demo-chatbase-key", // <-- Demo key, replace with your own for production
-        title: "JengaWeb AI Assistant",
-        welcomeMessage: "Hi! I'm JengaWeb AI. How can I help you today?",
-        primaryColor: "#0d9488",
-        secondaryColor: "#f97316",
-        position: "bottom-right",
-        floating: true
-      });
-    }
-  };
-  document.body.appendChild(script);
-})();
-</script>
 
 </body>
 </html>
